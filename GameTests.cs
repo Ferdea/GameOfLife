@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace GameOfLife
 {
@@ -18,23 +17,92 @@ namespace GameOfLife
         [Test]
         public void OneCellTest()
         {
-            var input = new bool[,]{{false, false, false}, {false, true, false}, {false, false, false}};
-            var expectedResult = new bool[,] {{false, false, false}, {false, false, false}, {false, false, false}};
+            // ...    ...
+            // .#. -> ...
+            // ...    ...
+            var input = new [,]{{false, false, false}, {false, true, false}, {false, false, false}};
+            var expectedResult = new [,]{{false, false, false}, {false, false, false}, {false, false, false}};
             Test(input, expectedResult);
         }
 
         [Test]
         public void EveryOneIsAlive()
         {
-            var input = new bool[,] { 
+            // .#.    ###
+            // ### -> #.#
+            // .#.    ###
+            var input = new [,] { 
                 { false, true, false }, 
                 { true, true, true },
                 { false, true, false } 
             };
-            var expectedResult = new bool[,] {
+            var expectedResult = new [,] {
                 { true, true, true }, 
                 { true, false, true }, 
                 { true, true, true }
+            };
+            Test(input, expectedResult);
+        }
+
+        [Test]
+        public void ThreeInOne()
+        {
+            // #.#    ...
+            // ... -> .#.
+            // #..    ...
+            var input = new[,]
+            {
+                { true, false, true },
+                { false, false, false },
+                { true, false, false }
+            };
+            var expectedResult = new[,]
+            {
+                { false, false, false },
+                { false, true, false },
+                { false, false, false }
+            };
+            Test(input, expectedResult);
+        }
+
+        [Test]
+        public void TwoCells()
+        {
+            // #..    ...
+            // ... -> ...
+            // ..#    ...
+            var input = new[,]
+            {
+                { true, false, false },
+                { false, false, false },
+                { false, false, true }
+            };
+            var expectedResult = new[,]
+            {
+                { false, false, false },
+                { false, false, false },
+                { false, false, false }
+            };
+            Test(input, expectedResult);
+        }
+
+        [Test]
+        public void Blinker()
+        {
+            // .#.    ...
+            // .#. -> ###
+            // .#.    ...
+            var input = new[,]
+            {
+                { false, true, false },
+                { false, true, false },
+                { false, true, false }
+            };
+            var expectedResult = new[,]
+            {
+                { false, false, false },
+                { true, true, true },
+                { false, false, false }
             };
             Test(input, expectedResult);
         }

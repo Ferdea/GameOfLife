@@ -53,6 +53,8 @@ namespace GameOfLife
                         newField[i, j] = false;
                     if (livingNeighbour == 3)
                         newField[i, j] = true;
+                    if (livingNeighbour == 2)
+                        newField[i, j] = field[i, j];
                 }
             }
             return newField;
