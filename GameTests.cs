@@ -22,5 +22,21 @@ namespace GameOfLife
             var expectedResult = new bool[,] {{false, false, false}, {false, false, false}, {false, false, false}};
             Test(input, expectedResult);
         }
+
+        [Test]
+        public void EveryOneIsAlive()
+        {
+            var input = new bool[,] { 
+                { false, true, false }, 
+                { true, true, true },
+                { false, true, false } 
+            };
+            var expectedResult = new bool[,] {
+                { true, true, true }, 
+                { true, false, true }, 
+                { true, true, true }
+            };
+            Test(input, expectedResult);
+        }
     }
 }
