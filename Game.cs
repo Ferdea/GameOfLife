@@ -30,8 +30,16 @@
     {
         public static bool[,] NextStep(bool[,] field)
         {
-            field[5, 5] = false;
-            return field;
+            var newField = new bool[3,3];
+            for (int i = 0; i < newField.GetLength(0); i++)
+            {
+
+                for(int j = 0; j < newField.GetLength(1); j++)
+                {
+                    newField[i, j] = false;
+                }
+            }
+            return newField;
         }
     }
 }
