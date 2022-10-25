@@ -106,5 +106,138 @@ namespace GameOfLife
             };
             Test(input, expectedResult);
         }
+
+        [Test]
+        public void StaticCell()
+        {
+            // .#.    .#.
+            // #.# -> #.#
+            // .#.    .#.
+            var input = new[,]
+            {
+                { false, true, false },
+                { true, false, true },
+                { false, true, false }
+            };
+            var expectedResult = new[,]
+            {
+                { false, true, false },
+                { true, false, true },
+                { false, true, false }
+            };
+            Test(input, expectedResult);
+        }
+        
+        [Test]
+        public void Full3By3()
+        {
+            // ###    #.#
+            // ### -> ...
+            // ###    #.#
+            var input = new[,]
+            {
+                { true, true, true }, 
+                { true, true, true }, 
+                { true, true, true }
+            };
+            var expectedResult = new[,]
+            {
+                { true, false, true }, 
+                { false, false, false }, 
+                { true, false, true }
+            };
+            Test(input, expectedResult);
+        }
+        
+        [Test]
+        public void Empty3By3()
+        {
+            // ...    ...
+            // ... -> ...
+            // ...    ...
+            var input = new[,]
+            {
+                { false, false, false }, 
+                { false, false, false }, 
+                { false, false, false }
+            };
+            var expectedResult = new[,]
+            {
+                { false, false, false }, 
+                { false, false, false }, 
+                { false, false, false }
+            };
+            Test(input, expectedResult);
+        }
+        
+        [Test]
+        public void BlackSquare()
+        {
+            // ....    ....
+            // .##. -> .##.
+            // .##.    .##.
+            // ....    ....
+            var input = new[,]
+            {
+                { false, false, false, false },
+                { false, true, true, false },
+                { false, true, true, false },
+                { false, false, false, false }
+            };
+            var expectedResult = new[,]
+            {
+                { false, false, false, false },
+                { false, true, true, false },
+                { false, true, true, false },
+                { false, false, false, false }
+            };
+            Test(input, expectedResult);
+        }
+        
+        [Test]
+        public void Full4By4()
+        {
+            // ####    #..#
+            // #### -> ....
+            // ####    ....
+            // ####    #..#
+            var input = new[,]
+            {
+                { true, true, true, true }, 
+                { true, true, true, true }, 
+                { true, true, true, true },
+                { true, true, true, true }
+            };
+            var expectedResult = new[,]
+            {
+                { true, false, false, true }, 
+                { false, false, false, false }, 
+                { false, false, false, false },
+                { true, false, false, true }
+            };
+            Test(input, expectedResult);
+        }
+        
+        [Test]
+        public void StaticBubble()
+        {
+            // .##.    .##.
+            // #..# -> #..#
+            // #..#    #..#
+            // .##.    .##.
+            var input = new[,]
+            {
+                { false, true, true, false }, 
+                { true, false, false, true }, 
+                { false, true, true, false }
+            };
+            var expectedResult = new[,]
+            {
+                { false,true,true,false },
+                { true,false,false,true },
+                { false,true,true,false }
+            };
+            Test(input, expectedResult);
+        }
     }
 }

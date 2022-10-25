@@ -32,15 +32,15 @@ namespace GameOfLife
     {
         public static bool[,] NextStep(bool[,] field)
         {
-            var newField = new bool[3, 3];
-            for (var i = 0; i < 3; i++)
+            var newField = new bool[field.GetLength(0), field.GetLength(1)];
+            for (var i = 0; i < field.GetLength(0); i++)
             {
-                for (var j = 0; j < 3; j++)
+                for (var j = 0; j < field.GetLength(1); j++)
                 {
                     var livingNeighbour = 0;
-                    for (var x = Math.Max(i - 1, 0); x < Math.Min(i + 2, 3); x++)
+                    for (var x = Math.Max(i - 1, 0); x < Math.Min(i + 2, field.GetLength(0)); x++)
                     {
-                        for (var y = Math.Max(j - 1, 0); y < Math.Min(j + 2, 3); y++)
+                        for (var y = Math.Max(j - 1, 0); y < Math.Min(j + 2, field.GetLength(1)); y++)
                         {
                             if (x == i && y == j)
                                 continue;
