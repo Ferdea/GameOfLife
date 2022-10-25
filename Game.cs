@@ -1,4 +1,6 @@
-﻿namespace GameOfLife
+﻿using System;
+
+namespace GameOfLife
 {
     /* Реализуйте игру в жизнь на прямоугольном конечном поле.
      Сашка привет чо делаешь 
@@ -30,13 +32,27 @@
     {
         public static bool[,] NextStep(bool[,] field)
         {
-            var newField = new bool[3,3];
-            for (int i = 0; i < newField.GetLength(0); i++)
+            var newField = new bool[3, 3];
+            for (var i = 0; i < 3; i++)
             {
-
-                for(int j = 0; j < newField.GetLength(1); j++)
+                for (var j = 0; j < 3; j++)
                 {
-                    newField[i, j] = false;
+                    var livingNeighbour = 0;
+                    for (var x = Math.Max(i - 1, 0); x < Math.Min(i + 2, 3); x++)
+                    {
+                        for (var y = Math.Max(j - 1, 0); y < Math.Min(j + 2, 3); y++)
+                        {
+                            if (x == i && y == j)
+                                continue;
+                            if (field[x, y])
+                                livingNeighbour++;
+                        }
+                    }
+                    
+                    if (livingNeighbour < 2 || livingNeighbour > 3)
+                        newField[i, j] = false;
+                    if (livingNeighbour == 3)
+                        newField[i, j] = true;
                 }
             }
             return newField;
