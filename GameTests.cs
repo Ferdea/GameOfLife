@@ -239,5 +239,32 @@ namespace GameOfLife
             };
             Test(input, expectedResult);
         }
+        
+        [Test]
+        public void Random5By5()
+        {
+            // #....    .....
+            // ..#.# -> .#.#.
+            // #..#.    .....
+            // .####    ##.##
+            // .#...    .#.#.
+            var input = new[,]
+            {
+                { true, false, false, false, false }, 
+                { false, false, true, false, true }, 
+                { true, false, false, true, false },
+                { false, true, true, true, true },
+                { false, true, false, false, false }
+            };
+            var expectedResult = new[,]
+            {
+                { false, false, false, false, false }, 
+                { false, true, false, true, false },
+                { false, false, false, false, false }, 
+                { true, true, false, true, true },
+                { false, true, false, true, false }
+            };
+            Test(input, expectedResult);
+        }
     }
 }
