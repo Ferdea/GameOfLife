@@ -111,9 +111,9 @@ namespace GameOfLife
         public void Population()
         {
 
-            //.#.#.     ..#..
+            //.#.#.     ..##.
             //..#.#     .##..
-            //..#.. --> ...#.
+            //..#.. --> .#.#.
             //#....     .#...
             //..#..     .....
             var input = new bool[,] {
@@ -125,9 +125,9 @@ namespace GameOfLife
 
             };
             var expectedResult = new bool[,] {
-                { false, false, true, false, false },
+                { false, false, true, true, false },
                 { false, true, true, false, false },
-                { false, false, false, true, false },
+                { false, true, false, true, false },
                 { false, true, false, false, false },
                 { false, false, false, false, false }
             };
@@ -158,8 +158,8 @@ namespace GameOfLife
         [Test]
         public void ThreeOClock()
         {
-            // .#.    ..#
-            // .## -> ...
+            // .#.    .##
+            // .## -> .##
             // ...    ...
             var input = new[,]
             {
@@ -169,8 +169,8 @@ namespace GameOfLife
             };
             var expectedResult = new[,]
             {
-                { false, false, true },
-                { false, false, false },
+                { false, true, true },
+                { false, true, true },
                 { false, false, false }
             };
             Test(input, expectedResult);
@@ -180,8 +180,8 @@ namespace GameOfLife
         public void Tetris()
         {
             // ...    .#.
-            // ### -> .#.
-            // #..    ...
+            // ### -> ##.
+            // #..    #..
             var input = new[,]
             {
                 { false, false, false },
@@ -191,8 +191,8 @@ namespace GameOfLife
             var expectedResult = new[,]
             {
                 { false, true, false },
-                { false, true, false },
-                { false, false, false }
+                { true, true, false },
+                { true, false, false }
             };
             Test(input, expectedResult);
         }
@@ -201,9 +201,9 @@ namespace GameOfLife
         public void Ellipse()
         {
             // ....    ....
-            // .##. -> ....
-            // #..#    ....
-            // .##.    ....
+            // .##. -> .##.
+            // #..#    #..#
+            // .##.    .##.
             var input = new[,]
             {
                 { false, false, false, false },
@@ -214,9 +214,9 @@ namespace GameOfLife
             var expectedResult = new[,]
             {
                 { false, false, false, false },
-                { false, false, false, false },
-                { false, false, false, false },
-                { false, false, false, false }
+                { false, true, true, false },
+                { true, false, false, true },
+                { false, true, true, false }
             };
             Test(input, expectedResult);
         }
